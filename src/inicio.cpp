@@ -46,7 +46,7 @@ Inicio::~Inicio() {}
 
 void Inicio::modo_inicio()
 {
-    cout << "************************INÍCIO*********************" << endl;
+    cout << "****************Livraria do Vinícius**************" << endl;
     cout << " Digite o número do comando para entrar na opção: " << endl;
     cout << " 1 - __________________Modo venda_________________" << endl;
     cout << " 2 - _________________Modo estoque________________" << endl;
@@ -75,7 +75,7 @@ void Inicio::modo_venda()
     ifstream infile;
 
     cout << "_____________________Modo venda____________________" << endl;
-    
+
     cout << "Digite o seu nome:" << endl;
     nome = getString();
     cout << "Digite o seu CPF: (Apenas números)" << endl;
@@ -136,7 +136,7 @@ void Inicio::modo_venda()
 
     while (opcao != 0)
     {
-        cout << "*********************CARRINHO**********************"<< endl;
+        cout << "*********************CARRINHO**********************" << endl;
         cout << "  Digite o número do comando para entrar na opção: " << endl;
         cout << "  1 - __________________Comprar____________________" << endl;
         cout << "  0 - _______________Concluir compra_______________" << endl;
@@ -217,7 +217,7 @@ void Inicio::modo_estoque()
         Livro l;
         vector<Livro *> livro;
         ofstream outfile;
-        
+
         cout << "***************************************************" << endl;
         cout << "____________________Modo estoque__________________" << endl;
         cout << " Digite o número do comando para entrar na opção: " << endl;
@@ -303,6 +303,25 @@ void Inicio::modo_recomenda()
         Recomenda recomenda;
         recomenda.recomendados(cpf);
 
+        int aux = -1;
+        while (aux != 0)
+        {
+            cout << "***************************************************" << endl;
+            cout << " 0 - _____________________Sair____________________" << endl;
+            cout << "***************************************************" << endl;
+
+            aux = getInput<int>();
+            switch (aux)
+            {
+            case 0:
+
+                break;
+
+            default:
+                cout << "Opção inválida" << endl;
+                break;
+            }
+        }
     }
 
     else

@@ -27,11 +27,11 @@ T1 getInput()
 
 int main()
 {
+    system("clear");
     int comando = -1;
-    Inicio inicio; 
+    Inicio inicio;
     while (comando != 0)
     {
-        system("clear");
         inicio.modo_inicio();
 
         comando = getInput<int>();
@@ -49,7 +49,7 @@ int main()
             inicio.modo_recomenda();
             break;
         case 0:
-            
+            cout << "Muito obrigado pela visita, volte sempre !!" << endl;
             break;
         default:
             cout << "Por favor, digite uma opção válida:" << endl;

@@ -76,25 +76,26 @@ void Carrinho::salva_produtos(vector<string> livro, string cpf)
     Socio socio;
     if (socio.verifica_socio(cpf))
     {
-        outfile.open("file/socios/" + cpf + ".txt",ios::app);
+        outfile.open("file/socios/" + cpf + ".txt", ios::app);
         int tam = livro.size();
         for (int aux = 0; aux < tam; aux += 3)
         {
             outfile << "\n";
             outfile << livro[aux] << endl;
-            outfile << livro[aux+1] << endl;
-            outfile << livro[aux+2] << endl;
+            outfile << livro[aux + 1] << endl;
+            outfile << livro[aux + 2] << endl;
         }
         outfile.close();
     }
-    else{
-        outfile.open("file/clientes/" + cpf + ".txt",ios::app);
+    else
+    {
+        outfile.open("file/clientes/" + cpf + ".txt", ios::app);
         int tam = livro.size();
         for (int aux = 0; aux < tam; aux += 3)
         {
             outfile << livro[aux] << endl;
-            outfile << livro[aux+1] << endl;
-            outfile << livro[aux+2] << endl;
+            outfile << livro[aux + 1] << endl;
+            outfile << livro[aux + 2] << endl;
         }
         outfile.close();
     }

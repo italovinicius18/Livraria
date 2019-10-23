@@ -54,53 +54,70 @@ void Recomenda::recomendados(string cpf)
     closedir(dir);
 
     int freq;
-    int temp=0;
+    int temp = 0;
     vector<pair<string, int>> TQ; //Tema e Quantidade comprada
     string favorito;
     vector<string> indicados;
     for (string aux : categorias)
     {
         freq = count(compras.begin(), compras.end(), aux);
-        if(freq>0){
-        TQ.push_back(make_pair(aux, freq));
-        temp++;
+        if (freq > 0)
+        {
+            TQ.push_back(make_pair(aux, freq));
+            temp++;
         }
     }
 
     sort(TQ.begin(), TQ.end(), sortbysec);
 
-    vector<string> recomendados; 
+    vector<string> recomendados;
+    vector<set<string>> livros;
     vector<string> mais_comprados;
-    for (int i=0;i<temp;i++){
-        cout<<TQ[i].first<<endl;
+    for (int i = 0; i < temp; i++)
+    {
         mais_comprados.push_back(TQ[i].first);
     }
-    
+
     int contador = 1;
     temp = 1;
+    aux = 0;
     for (string i : mais_comprados)
     {
-        if(contador == (10+temp)){
+        if (contador == (10 + temp))
+        {
             break;
         }
         recomendados.push_back(i);
         temp++;
-        string path = "file/estoque/"+i;
+        string path = "file/estoque/" + i;
         DIR *dir = opendir(path.c_str());
+        set<string> temp;
         while ((entry = readdir(dir)) != NULL)
         {
-            if (entry->d_name[0] != 46 and find (compras.begin(), compras.end(), entry->d_name) == compras.end())
+            if (entry->d_name[0] != 46 and find(compras.begin(), compras.end(), entry->d_name) == compras.end())
             {
-                recomendados.push_back(arquivo.retorna_linha("file/estoque/"+i+"/"+entry->d_name,1));
+                temp.insert(arquivo.retorna_linha("file/estoque/" + i + "/" + entry->d_name, 1));
                 contador++;
             }
         }
+        livros.push_back(temp);
+        aux++;
         closedir(dir);
     }
-    
-    cout<< "Estes são os mais indicados pra você por ordem de recomendação:" <<endl;
-    for (string aux: recomendados){
-        cout<<aux<<endl;
+
+    cout << "Estes são os mais indicados pra você por ordem de recomendação:" << endl;
+    int tamanho = recomendados.size();
+    if (tamanho == 0)
+    {
+        cout << "Percebemos que você ainda não comprou nenhum produto, volte quando comprar algo, agradeço a compreensão" << endl;
+    }
+    for (int i = 0; i < tamanho; i++)
+    {
+        cout << recomendados[i] << endl;
+        for (string livro : livros[i])
+        {
+            cout << livro << endl;
+        }
     }
     recomendados.clear();
 }

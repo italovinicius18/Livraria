@@ -32,7 +32,7 @@ bool Socio::verifica_socio(string cpf)
     }
     closedir(dir);
 
-    cpf = cpf+".txt";
+    cpf = cpf + ".txt";
 
     while (true)
     {
@@ -40,15 +40,17 @@ bool Socio::verifica_socio(string cpf)
         {
             return true;
         }
-        else{
+        else
+        {
             return false;
         }
     }
 }
 
-double Socio::desconto_socio(double valor){
+double Socio::desconto_socio(double valor)
+{
     double novo_valor;
     double porcento = 20;
-    novo_valor = valor - (valor*(porcento/100));
+    novo_valor = valor - (valor * (porcento / 100));
     return novo_valor;
 }

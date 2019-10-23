@@ -150,7 +150,7 @@ void Livro::lista_categoria()
 }
 
 void Livro::lista_livro(string categoria)
-{   
+{
     cout << "---------------------Livros------------------------" << endl;
     Arquivo arquivo;
     string nome;

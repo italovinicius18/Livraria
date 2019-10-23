@@ -24,10 +24,10 @@ public:
     void set_email(string email);
     string get_telefone();
     void set_telefone(string telefone);
-    bool verifica_cliente(string cpf);
+    virtual bool verifica_cliente(string cpf);
     string verifica_cpf();
-    void imprime_dados();
-    string salva_dados();
+    virtual void imprime_dados();
+    virtual string salva_dados();
 };
 
 #endif
